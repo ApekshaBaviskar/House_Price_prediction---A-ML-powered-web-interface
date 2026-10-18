@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Appraise — AI Home Valuation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ============ NAV ============ -->
+<header class="site-header">
+  <div class="wrap header-row">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 20 L20 8 L34 20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10 18 V32 H30 V18" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M17 32 V24 H23 V32" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="20" cy="8" r="1.6" fill="currentColor"/>
+      </svg>
+      <span class="brand-name">Appraise</span>
+    </div>
+    <div class="header-tag">
+      <span class="dot"></span> Model status: <strong id="modelStatus">checking…</strong>
+    </div>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow">No. 001 &nbsp;·&nbsp; Automated Valuation Model</p>
+      <h1>Know what your<br><em>home</em> is really worth.</h1>
+      <p class="hero-sub">
+        Enter the specifications below and a machine-learning model — trained on
+        thousands of comparable properties — will draft an instant estimate of
+        your home's market value.
+      </p>
+      <a href="#estimator" class="btn btn-primary">Start the appraisal ↓</a>
+
+      <dl class="stat-row">
+        <div><dt>R² accuracy</dt><dd>0.95</dd></div>
+        <div><dt>Signals used</dt><dd>12</dd></div>
+        <div><dt>Estimate time</dt><dd>&lt; 1 sec</dd></div>
+      </dl>
+    </div>
+
+    <div class="hero-plan" aria-hidden="true">
+      <svg viewBox="0 0 480 420" class="blueprint-svg" id="blueprintSvg">
+        <!-- grid -->
+        <defs>
+          <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+            <path d="M 24 0 L 0 0 0 24" fill="none" stroke="rgba(196,214,232,0.14)" stroke-width="1"/>
+          </pattern>
+        </defs>
+        <rect width="480" height="420" fill="url(#grid)" />
+
+        <!-- house outline (drawn in) -->
+        <g class="draw-line" stroke="#E7EEF5" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M60 210 L240 90 L420 210" />
+          <path d="M95 195 L95 350 L385 350 L385 195" />
+          <path d="M200 350 L200 260 L280 260 L280 350" />
+          <path d="M135 230 H175 M135 230 V270 M175 230 V270 M135 270 H175" />
+          <path d="M305 230 H345 M305 230 V270 M345 230 V270 M305 270 H345" />
+        </g>
+
+        <!-- dimension lines -->
+        <g class="draw-line-delay" stroke="#7FA8CC" stroke-width="1" fill="none">
+          <line x1="60" y1="365" x2="385" y2="365" />
+          <line x1="60" y1="360" x2="60" y2="370" />
+          <line x1="385" y1="360" x2="385" y2="370" />
+          <line x1="410" y1="210" x2="410" y2="350" />
+          <line x1="405" y1="210" x2="415" y2="210" />
+          <line x1="405" y1="350" x2="415" y2="350" />
+        </g>
+        <text x="205" y="382" fill="#9CBBD8" font-family="IBM Plex Mono, monospace" font-size="12">32'-6"</text>
+        <text x="422" y="284" fill="#9CBBD8" font-family="IBM Plex Mono, monospace" font-size="12" transform="rotate(90 422 284)">18'-0"</text>
+        <text x="60" y="70" fill="#C7DAEE" font-family="IBM Plex Mono, monospace" font-size="12" letter-spacing="1">FIG. 01 — RESIDENTIAL ELEVATION</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- ============ ESTIMATOR ============ -->
+<section class="estimator" id="estimator">
+  <div class="wrap est-grid">
+
+    <div class="est-intro">
+      <p class="eyebrow eyebrow-dark">Property Details</p>
+      <h2>Tell us about<br>the property.</h2>
+      <p class="est-sub">Every field feeds directly into the model — the more accurate your inputs, the tighter the estimate.</p>
+
+      <div class="preview-card">
+        <svg viewBox="0 0 120 100" class="preview-svg">
+          <path d="M10 55 L60 20 L110 55" stroke="#C99A3E" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <rect x="22" y="52" width="76" height="40" fill="none" stroke="#17222E" stroke-width="3" stroke-linejoin="round"/>
+          <rect id="prevDoor" x="52" y="70" width="16" height="22" fill="#17222E"/>
+          <rect id="prevWinL" x="30" y="60" width="14" height="14" fill="none" stroke="#17222E" stroke-width="2"/>
+          <rect id="prevWinR" x="76" y="60" width="14" height="14" fill="none" stroke="#17222E" stroke-width="2"/>
+          <g id="prevAC" opacity="0.15">
+            <rect x="86" y="56" width="10" height="6" rx="1" fill="#2F6F63"/>
+          </g>
+          <g id="prevGarage" opacity="0.15">
+            <rect x="12" y="78" width="14" height="14" fill="#17222E"/>
+          </g>
+        </svg>
+        <p class="preview-label">Live sketch</p>
+      </div>
+    </div>
+
+    <form class="est-form" id="estForm">
+
+      <div class="field field-wide">
+        <label for="area">
+          <svg class="ficon" viewBox="0 0 24 24"><path d="M3 17 L17 3 M9 9 L15 3 M3 11 L9 5" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round"/></svg>
+          Area
+          <span class="unit">sq ft</span>
+        </label>
+        <input type="number" id="area" name="area" min="200" max="30000" step="10" value="5000" required />
+      </div>
+
+      <div class="field">
+        <label for="bedrooms">
+          <svg class="ficon" viewBox="0 0 24 24"><path d="M3 19v-6a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v6M3 19v2M21 19v2M3 13V7a2 2 0 0 1 2-2h5v6" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bedrooms
+        </label>
+        <input type="number" id="bedrooms" name="bedrooms" min="1" max="10" value="4" required />
+      </div>
+
+      <div class="field">
+        <label for="bathrooms">
+          <svg class="ficon" viewBox="0 0 24 24"><path d="M4 12h16M6 12V6a2 2 0 0 1 3-1.7M5 19l1-4M19 19l-1-4M8 19h8" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          Bathrooms
+        </label>
+        <input type="number" id="bathrooms" name="bathrooms" min="1" max="8" value="3" required />
+      </div>
+
+      <div class="field">
+        <label for="stories">
+          <svg class="ficon" viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" stroke="currentColor" stroke-width="1.6" fill="none"/><path d="M4 9h16M4 15h16" stroke="currentColor" stroke-width="1.6"/></svg>
+          Stories
+        </label>
+        <input type="number" id="stories" name="stories" min="1" max="6" value="1" required />
+      </div>
+
+      <div class="field">
+        <label for="parking">
+          <svg class="ficon" viewBox="0 0 24 24"><path d="M3 13l2-6a2 2 0 0 1 2-1h10a2 2 0 0 1 2 1l2 6M3 13v5a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-1h12v1a1 1 0 0 0 1 1h1a1 1 0 0 0 1-1v-5M3 13h18" stroke="currentColor" stroke-width="1.6" fill="none" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7" cy="16" r="1" fill="currentColor"/><circle cx="17" cy="16" r="1" fill="currentColor"/></svg>
+          Parking
+        </label>
+        <input type="number" id="parking" name="parking" min="0" max="6" value="3" required />
+      </div>
+
+      <div class="field field-toggle">
+        <span class="toggle-label">Main road</span>
+        <label class="switch">
+          <input type="checkbox" id="mainroad" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="field field-toggle">
+        <span class="toggle-label">Guest room</span>
+        <label class="switch">
+          <input type="checkbox" id="guestroom">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="field field-toggle">
+        <span class="toggle-label">Basement</span>
+        <label class="switch">
+          <input type="checkbox" id="basement">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="field field-toggle">
+        <span class="toggle-label">Hot water heating</span>
+        <label class="switch">
+          <input type="checkbox" id="hotwaterheating">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="field field-toggle">
+        <span class="toggle-label">Air conditioning</span>
+        <label class="switch">
+          <input type="checkbox" id="airconditioning" checked>
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="field field-toggle">
+        <span class="toggle-label">Preferred area</span>
+        <label class="switch">
+          <input type="checkbox" id="prefarea">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <div class="field field-wide">
+        <label>Furnishing status</label>
+        <div class="segmented" id="furnishing" data-value="semi-furnished">
+          <button type="button" data-value="unfurnished">Unfurnished</button>
+          <button type="button" data-value="semi-furnished" class="active">Semi-Furnished</button>
+          <button type="button" data-value="furnished">Furnished</button>
+        </div>
+      </div>
+
+      <div class="field field-wide submit-row">
+        <button type="submit" class="btn btn-primary btn-wide" id="submitBtn">
+          Calculate estimated value
+        </button>
+        <p class="form-error" id="formError"></p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<!-- ============ RESULT ============ -->
+<section class="result" id="resultSection">
+  <div class="wrap result-wrap">
+    <div class="result-card" id="resultCard">
+      <div class="stamp" id="stamp">
+        <svg viewBox="0 0 200 200" class="stamp-ring">
+          <circle cx="100" cy="100" r="92" fill="none" stroke="#C99A3E" stroke-width="1.4" stroke-dasharray="4 4"/>
+          <circle cx="100" cy="100" r="78" fill="none" stroke="#C99A3E" stroke-width="1"/>
+        </svg>
+        <div class="stamp-inner">
+          <p class="stamp-label">Estimated Value</p>
+          <p class="stamp-price" id="stampPrice">—</p>
+          <p class="stamp-sub">Approved by Appraise ML v1</p>
+        </div>
+      </div>
+      <div class="result-meta">
+        <p class="result-note" id="resultNote">Fill in the property details and press “Calculate estimated value” to see a live figure here.</p>
+        <ul class="result-breakdown" id="resultBreakdown"></ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <span>Appraise — machine-learning powered property estimates.</span>
+    <span class="footer-note">Estimates are indicative only and not a formal valuation.</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
